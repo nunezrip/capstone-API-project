@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recipe API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Food2Fork offers an API which exposes its ingredient search functionality across its database of publishers. The API gives you access to our ever expanding socially ranked recipe database and state-of-the-art ingredient search function, providing your app with the necessary tools to gain a competitive edge over the competition.   -->
+
+    <main>
+        <h1>Food Recipe Search</h1>
+        <div class="form-container">
+            <form id="search-form">
+                <input type="text" value="" id='search-term'>
+                <button type="submit">→</button>
+            </form>
+            <div style='text-align:center'>
+                <button id="trending">Trending</button>
+                <button id="rating">Rating</buttom>
+            </div>
+            <!-- <div class="dropdown"></div> -->
+        </div>
+        <div class="results"></div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
