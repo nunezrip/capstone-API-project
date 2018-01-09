@@ -5,13 +5,23 @@
 
 body {
     margin: 0;
+    background-color: blanchedalmond;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: 80vh;
+    width: 100vw;
 }
 
 h1 {
     font-size: 50px;
     text-align: center;
-    font-family: sans-serif;
-    font-weight: lighter;
+    font-family: 'Macondo', cursive;
+    font-weight: bold;
+    color: rgba(227, 155, 14, 0.64);
 }
 
 .form-container {
@@ -30,6 +40,7 @@ form input {
     margin-right: 3px;
     font-size: 18px;
     padding: 10px;
+    background-color: whitesmoke;
 }
 
 form button {
@@ -41,6 +52,7 @@ form button {
 }
 
 .dropdown {
+    display: none;
     display: none;
     max-width: 444px;
     border: 1px solid #aaa;
