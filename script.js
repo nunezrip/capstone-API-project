@@ -1,91 +1,74 @@
 // READ the Food2Fork API docs: http://food2fork.com/about/api
 
-// Search Requests to --> http://food2fork.com/api/search
-// Recipe Request to ---> http://food2fork.com/api/get
+// search_api --> Search Requests to --> http://food2fork.com/api/search
+// get_api --> Recipe Request to ---> http://food2fork.com/api/get
 
+// SAMPLE Request:  http://food2fork.com/api/search?key={API_KEY}&q=shredded%20chicken
 
-const search_endpoint = 'http://food2fork.com/api/search'
-const recipe_endpoint = 'http://food2fork.com/api/get'
-const api_key = `b1e2e3086bc7b16601f541716bc0bfc7`
-const results = document.querySelector(`.results`)
-// const searchForm = document.querySelector(`#search-form`);
-let term = ''
-const searchInput = document.getElementById('search-term');
-searchInput.addEventListener('keypress', (e) => {
-    e.preventDefault()
-    if (e.keyCode === 13) {
-        console.log(e.target.value)
+// ?key={API_KEY}&q=shredded%20chicken
+
+const api_key = `b1e2e3086bc7b16601f541716bc0bfc7`;
+const search_api = 'http://food2fork.com/api/search';
+const get_api = 'http://food2fork.com/api/get';
+
+// Accessing the API repository with GET request
+
+$.ajax({
+    type: "GET",
+    url: `${search_api}?key=${api_key}&q=''`,
+    dataType: "json",
+    success: function (data) {
+        console.log('success ', data);
+    },
+    error: function (errorMessage) {
+        console.log("error");
     }
+});
 
+const searchForm = document.querySelector(`#search-form`);
+const searchInput = document.getElementById('search-term');
+const results = document.querySelector(`.results`);
+let term = '';
+
+searchInput.addEventListener('submit', (e) => {
+    e.preventDefault(searchInput);
+    console.log(searchInput);
 })
 
+$(function () {
+    console.log("ready!");
+});
 
-function searchRequest(term) {
+searchForm.addEventListener(`submit`, function (e) {
+    e.preventDefault();
+    const term = document.querySelector('#search-term').value;
+    results.innerHTML = search_api;
+    console.log(results);
+})
+
+const trendingButtom = document.querySelector('#trending')
+
+trendingButtom.addEventListener('click', function (e) {
+    results.innerHTML = {
+        results
+    };
     $.ajax({
-            url: `${search_endpoint}?key=${api_key}&q=${term}`
-
-            // http://food2fork.com/api/search?key={API_KEY}&q=shredded%20chicken
+            url: `${get_api}?key=${api_key}&q=''`
         })
         .done(function (response) {
-            console.log(response)
-            // console.log(response.data[0].images.original.url)
-
-            // for (let i = 0; i < response.data.length; i++) {
-            //     results.innerHTML += `<img src="${response.data[i].images.original.url}">`
-            // }
-
+            console.log(response);
         })
-}
+})
 
-function recipeRequest(term, path) {
+const ratingButtom = document.querySelector('#rating')
+
+ratingButtom.addEventListener('click', function (e) {
+    results.innerHTML = '{"count": 30, "recipes": []}';
     $.ajax({
-            url: `${recipe_endpoint}${path}?api_key=${api_key}&q=${term}`
+            url: `${search_api}?key=${api_key}&q=''`
         })
         .done(function (response) {
-            console.log(response)
-            // console.log(response.data[0].images.original.url)
-
-            for (let i = 0; i < response.data.length; i++) {
-                results.innerHTML += `<img src="${response.data[i].images.original.url}">`
-            }
-
+            console.log(response);
         })
-}
 
-// searchForm.addEventListener(`submit`, function (e) {
-//     e.preventDefault()
-
-//     const term = document.querySelector('#search-term').value
-
-//     results.innerHTML = ``
-//     recipeRequest(term, 'search')
-// })
-
-// const trendingButtom = document.querySelector('#trending')
-// trendingButtom.addEventListener('click', function (e) {
-//     results.innerHTML = ''
-//     recipeRequest(undefined, 'trending')
-
-
-// })
-
-// const randomButtom = document.querySelector('#random')
-// randomButtom.addEventListener('click', function (e) {
-//     results.innerHTML = ''
-//     $.ajax({
-//             url: `${recipe_endpoint}/random?api_key=${api_key}`
-//         })
-
-//         .done(function (response) {
-//             console.log(response)
-//             results.innerHTML += `<img src="${response.data.image_url}">`
-//         })
-// })
-
-// General Search:
-
-//http://food2fork.com/api/search?key=b1e2e3086bc7b16601f541716bc0bfc7&q=shredded%20chicken
-
-// Recipe Search:
-
-// http://food2fork.com/api/get?key=b1e2e3086bc7b16601f541716bc0bfc7&rId=35171
+})
