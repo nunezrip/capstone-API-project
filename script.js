@@ -10,18 +10,19 @@
 /////////////////////////RECIPE APP/////////////////////////////////////
 
 const api_key = `b1e2e3086bc7b16601f541716bc0bfc7`;
-// const search_api = 'http://food2fork.com/api/search';
-const get_api = 'http://food2fork.com/api/get';
+// const search_api = 'http://food2fork.com/api/search?key=${api_key}&q=${term}';
+// const get_api = 'http://food2fork.com/api/get?key=${api_key}&q=${term}';
 
 const searchForm = document.querySelector(`#search-form`);
 const searchInput = document.getElementById('search-term');
+
 const results = document.querySelector(`.results`);
 
 searchForm.addEventListener(`submit`, function (e) {
     e.preventDefault();
     const term = document.querySelector('#search-term').value;
     const search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}`;
-    // const recipes = [];
+
     $.ajax({
         url: search_api,
         dataType: 'json',
@@ -30,10 +31,11 @@ searchForm.addEventListener(`submit`, function (e) {
             let recipes = data.recipes;
 
             for (let key in recipes) {
-                // results.innerHTML += `<img src="${recipes[key].image_url}">`
+
                 console.log(recipes[key].title);
 
                 results.innerHTML += ` 
+
                 <div class='title'>
                 <br>
                         <div class = 'recipe-title'>
@@ -67,7 +69,7 @@ searchForm.addEventListener(`submit`, function (e) {
                          </a>
                     </div>
                 `;
-                results.innerHTML += `<img src="${recipes[key].image_url}">`
+                results.innerHTML += `<img class='results_img' src="${recipes[key].image_url}">`
             }
         },
         error: function (error) {
@@ -77,25 +79,70 @@ searchForm.addEventListener(`submit`, function (e) {
 })
 
 
+/////////////////////SEARCH BY TRENDING RECIPES//////////////////////////
+
+// const api_key = `b1e2e3086bc7b16601f541716bc0bfc7`;
+const trendingButtom = document.querySelector('#trending')
+
+trendingButtom.addEventListener('click', function (e) {
+    e.preventDefault();
+    const get_api = 'http://food2fork.com/api/get?key=${api_key}&sort=t';
+    // results.innerHTML = {
+    //     results
+    // };
+    $.ajax({
+        url: get_api,
+        dataType: 'json',
+        success: function (data) {
+            let recipes = data.recipes;
+            for (let key in recipes) {
+                console.log(recipes[key].title);
+
+                results.innerHTML += ` 
+                <div class='title'>
+                <br>
+                        <div class = 'recipe-title'>
+                            Recipe Title: ${recipes[key].title}
+                        </div>
+                        <br>
+                        <a href=
+                        <ul>
+                            <li>
+                                Source URL:  ${recipes[key].source_url} 
+                            </li>
+
+                            <li>
+                                 f2f URL: ${recipes[key].f2f_url}
+                            </li>
+
+                            <li>
+                                Publisher: ${recipes[key].publisher}
+                            </li>
+
+                            <li>
+                                 Publisher URL: ${recipes[key].publisher_url}
+                            </li>
+
+                            <li>
+                                Rating: ${recipes[key].social_rank}
+                            </li>
+
+                        </ul>
+                         </a>
+                    </div>
+                `;
+                results.innerHTML += `<img class='results_img' src="${recipes[key].image_url}">`
+            }
+        },
+        error: function (error) {
+            console.log('Error: ' + error)
+        }
+    });
+})
 
 
+////////////////////////TRENDING RECIPES/////////////////////////////
 
-
-////////////////////////////////////////////////////////////////////
-
-// const trendingButtom = document.querySelector('#trending')
-
-// trendingButtom.addEventListener('click', function (e) {
-//     results.innerHTML = {
-//         results
-//     };
-//     $.ajax({
-//             url: `${get_api}?key=${api_key}&q=''`
-//         })
-//         .done(function (response) {
-//             console.log(response);
-//         })
-// })
 
 // const ratingButtom = document.querySelector('#rating')
 
@@ -107,5 +154,4 @@ searchForm.addEventListener(`submit`, function (e) {
 //         .done(function (response) {
 //             console.log(response);
 //         })
-
 // })

@@ -8,27 +8,73 @@ body {
     background-color: blanchedalmond;
 }
 
-img {
+.top_img {
+    background-position: top;
     display: flex;
     justify-content: center;
     align-self: center;
-    height: 80vh;
-    width: 100vw;
+    width: 100%;
+    height: auto;
 }
 
-h1 {
-    font-size: 70px;
+.btm_img {
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    height: auto;
+}
+
+.results_img {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-self: left;
+    max-width: 100%;
+    height: auto;
+}
+
+#main_achronym {
+    font-size: 130px;
     text-align: center;
     font-family: 'Macondo', cursive;
     font-weight: bold;
-    color: rgba(161, 90, 9, 0.64);
+    color: rgba(194, 16, 0, 0.86);
+}
+
+h1 {
+    font-size: 90px;
+    text-align: center;
+    font-family: 'Macondo', cursive;
+    font-weight: bolder;
+    color: rgba(194, 16, 0, 0.86);
+}
+
+h2 {
+    font-size: 80px;
+    text-align: center;
+    font-family: 'Macondo', cursive;
+    font-weight: bold;
+    color: rgba(194, 16, 0, 0.86);
+}
+
+h3 {
+    padding: 0;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Macondo', cursive;
+    font-weight: bold;
+    color: rgba(235, 54, 8, 0.86);
 }
 
 .results {
     margin-top: 40px;
     padding: 30px;
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
+    justify-content: left;
+    align-self: left;
 }
 
 .title {
@@ -41,7 +87,7 @@ h1 {
 }
 
 .recipe-title {
-    font-size: 20px;
+    font-size: 40px;
     color: rgb(155, 23, 6);
     font-weight: bolder;
 }
@@ -66,34 +112,12 @@ form input {
 }
 
 form button {
-    width: 60px;
-    font-size: 40px;
+    width: 80px;
+    font-size: 60px;
     font-weight: bolder;
     padding: 0;
     line-height: .5;
-}
-
-.dropdown {
-    display: none;
-    display: none;
-    max-width: 444px;
-    border: 1px solid #aaa;
-    margin-right: auto;
-    border-top: none;
-}
-
-.dropdown .suggestion {
-    padding: 10px;
-    display: block;
-    cursor: pointer;
-    font-size: 18px;
-    font-family: sans-serif;
-}
-
-.dropdown .suggestion:hover,
-.dropdown .suggestion:focus {
-    background-color: #0072C6;
-    color: #fff;
+    color: rgba(67, 51, 15, 0.79)
 }
 
 .results img {
