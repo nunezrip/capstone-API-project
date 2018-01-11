@@ -21,7 +21,29 @@ h1 {
     text-align: center;
     font-family: 'Macondo', cursive;
     font-weight: bold;
-    color: rgba(227, 155, 14, 0.64);
+    color: rgba(161, 90, 9, 0.64);
+}
+
+.results {
+    margin-top: 40px;
+    padding: 30px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-self: left;
+    font-size: 20px;
+    color: rgb(163, 40, 24);
+}
+
+.recipe-title {
+    font-size: 20px;
+    color: rgb(155, 23, 6);
+    font-weight: bolder;
 }
 
 .form-container {
@@ -72,15 +94,6 @@ form button {
 .dropdown .suggestion:focus {
     background-color: #0072C6;
     color: #fff;
-}
-
-.results {
-    margin-top: 40px;
-    padding: 30px;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
 }
 
 .results img {
