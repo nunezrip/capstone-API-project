@@ -9,21 +9,14 @@ body {
 }
 
 .top_img {
-    background-position: top;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    width: 100%;
-    height: auto;
+    background-image: url("https://res.cloudinary.com/hellofresh/image/upload/dpr_auto,f_auto,fl_lossy,q_80,w_730/v1/hellofresh_s3/image/5a149bd6d56afa177c7396e2-cfaac55c.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
 }
 
 .btm_img {
-    background-position: bottom;
-    display: flex;
-    justify-content: center;
-    align-self: center;
     width: 100%;
-    height: auto;
 }
 
 .results_img {
@@ -36,7 +29,7 @@ body {
 }
 
 #main_achronym {
-    font-size: 130px;
+    font-size: 100px;
     text-align: center;
     font-family: 'Macondo', cursive;
     font-weight: bold;
@@ -44,7 +37,7 @@ body {
 }
 
 h1 {
-    font-size: 90px;
+    font-size: 50px;
     text-align: center;
     font-family: 'Macondo', cursive;
     font-weight: bolder;
@@ -52,7 +45,7 @@ h1 {
 }
 
 h2 {
-    font-size: 80px;
+    font-size: 40px;
     text-align: center;
     font-family: 'Macondo', cursive;
     font-weight: bold;
@@ -93,14 +86,15 @@ h3 {
 }
 
 .form-container {
-    max-width: 500px;
+    max-width: 800px;
     margin: auto;
     margin-top: 30px;
 }
 
-form {
+#search-form {
     width: 100%;
     display: flex;
+    text-align: center;
 }
 
 form input {
@@ -111,15 +105,24 @@ form input {
     background-color: whitesmoke;
 }
 
-form button {
-    width: 80px;
-    font-size: 60px;
-    font-weight: bolder;
+form input::placeholder {
+    text-align: center;
+}
+
+#submit-btn {
+    background: transparent;
+    border: none;
+    justify-content: center;
     padding: 0;
     line-height: .5;
-    color: rgba(67, 51, 15, 0.79)
+}
+
+#submit-btn-img {
+    background-position: center;
+    height: 60px;
 }
 
 .results img {
     margin: 10px;
+    border-radius: 25px;
 }

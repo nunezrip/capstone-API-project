@@ -1,3 +1,7 @@
+// //////////////////////////fork2fork API////////////////////////////
+
+// Food2Fork offers an API which exposes its ingredient search functionality across its database of publishers. The API gives you access to our ever expanding socially ranked recipe database and state-of-the-art ingredient search function, providing your app with the necessary tools to gain a competitive edge over the competition.
+
 // READ the Food2Fork API docs: http://food2fork.com/about/api
 
 // search_api --> Search Requests to --> http://food2fork.com/api/search
@@ -10,148 +14,55 @@
 /////////////////////////RECIPE APP/////////////////////////////////////
 
 const api_key = `b1e2e3086bc7b16601f541716bc0bfc7`;
-// const search_api = 'http://food2fork.com/api/search?key=${api_key}&q=${term}';
-// const get_api = 'http://food2fork.com/api/get?key=${api_key}&q=${term}';
 
 const searchForm = document.querySelector(`#search-form`);
 const searchInput = document.getElementById('search-term');
 
 const results = document.querySelector(`.results`);
 
-searchForm.addEventListener(`submit`, function (e) {
-    e.preventDefault();
-    const term = document.querySelector('#search-term').value;
-    const search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}`;
+searchForm.addEventListener(`submit`, function(e) {
+	e.preventDefault();
+	const term = document.querySelector('#search-term').value;
+	const search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}`;
 
-    $.ajax({
-        url: search_api,
-        dataType: 'json',
-        success: function (data) {
+	$.ajax({
+		url: search_api,
+		dataType: 'json',
+		success: function(data) {
+			let recipes = data.recipes;
 
-            let recipes = data.recipes;
-
-            for (let key in recipes) {
-
-                console.log(recipes[key].title);
-
-                results.innerHTML += ` 
-
-                <div class='title'>
-                <br>
-                        <div class = 'recipe-title'>
-                            Recipe Title: ${recipes[key].title}
-                        </div>
-                        <br>
-                        <a href=
-                        <ul>
-
-                            <li>
-                                Source URL:  ${recipes[key].source_url} 
-                            </li>
-
-                            <li>
-                                 f2f URL: ${recipes[key].f2f_url}
-                            </li>
-
-                            <li>
-                                Publisher: ${recipes[key].publisher}
-                            </li>
-
-                            <li>
-                                 Publisher URL: ${recipes[key].publisher_url}
-                            </li>
-
-                            <li>
-                                Rating: ${recipes[key].social_rank}
-                            </li>
-                           
-                        </ul>
-                         </a>
-                    </div>
-                `;
-                results.innerHTML += `<img class='results_img' src="${recipes[key].image_url}">`
-            }
-        },
-        error: function (error) {
-            console.log('Error: ' + error)
-        }
-    });
-})
-
-
-/////////////////////SEARCH BY TRENDING RECIPES//////////////////////////
-
-// const api_key = `b1e2e3086bc7b16601f541716bc0bfc7`;
-const trendingButtom = document.querySelector('#trending')
-
-trendingButtom.addEventListener('click', function (e) {
-    e.preventDefault();
-    const get_api = 'http://food2fork.com/api/get?key=${api_key}&sort=t';
-    // results.innerHTML = {
-    //     results
-    // };
-    $.ajax({
-        url: get_api,
-        dataType: 'json',
-        success: function (data) {
-            let recipes = data.recipes;
-            for (let key in recipes) {
-                console.log(recipes[key].title);
-
-                results.innerHTML += ` 
-                <div class='title'>
-                <br>
-                        <div class = 'recipe-title'>
-                            Recipe Title: ${recipes[key].title}
-                        </div>
-                        <br>
-                        <a href=
-                        <ul>
-                            <li>
-                                Source URL:  ${recipes[key].source_url} 
-                            </li>
-
-                            <li>
-                                 f2f URL: ${recipes[key].f2f_url}
-                            </li>
-
-                            <li>
-                                Publisher: ${recipes[key].publisher}
-                            </li>
-
-                            <li>
-                                 Publisher URL: ${recipes[key].publisher_url}
-                            </li>
-
-                            <li>
-                                Rating: ${recipes[key].social_rank}
-                            </li>
-
-                        </ul>
-                         </a>
-                    </div>
-                `;
-                results.innerHTML += `<img class='results_img' src="${recipes[key].image_url}">`
-            }
-        },
-        error: function (error) {
-            console.log('Error: ' + error)
-        }
-    });
-})
-
-
-////////////////////////TRENDING RECIPES/////////////////////////////
-
-
-// const ratingButtom = document.querySelector('#rating')
-
-// ratingButtom.addEventListener('click', function (e) {
-//     results.innerHTML = '{"count": 30, "recipes": []}';
-//     $.ajax({
-//             url: `${search_api}?key=${api_key}&q=''`
-//         })
-//         .done(function (response) {
-//             console.log(response);
-//         })
-// })
+			for (let key in recipes) {
+				console.log(recipes[key].title);
+				results.innerHTML += ` 
+				<div class='title'>
+								<div class = 'recipe-title'>
+										Recipe Title: ${recipes[key].title}
+								</div>
+								<ul>
+										<li>
+												Rating: ${recipes[key].social_rank}
+										</li>
+										<li>
+												Publisher: ${recipes[key].publisher}
+										</li>
+										<li>
+												<a href=${recipes[key].publisher_url}/>Publisher</a>
+										</li>
+										<li>
+										<a href=${recipes[key].source_url}/>Source</a> 
+										</li>
+										<li>
+												<a href=${recipes[key].f2f_url}/>Ingredients and Directions at Fork2Fork (f2f)</a>
+										</li>
+								</ul>
+									
+						</div>
+				`;
+				results.innerHTML += `<img class='results_img' src="${recipes[key].image_url}">`;
+			}
+		},
+		error: function(error) {
+			console.log('Error: ' + error);
+		},
+	});
+});
