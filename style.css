@@ -17,6 +17,7 @@ body {
 
 .btm_img {
     width: 100%;
+    padding-top: 90px;
 }
 
 .results_img {
@@ -75,6 +76,7 @@ h3 {
     flex-direction: column;
     justify-content: left;
     align-self: left;
+    padding-top: 20px;
     font-size: 20px;
     color: rgb(163, 40, 24);
 }
@@ -125,4 +127,12 @@ form input::placeholder {
 .results img {
     margin: 10px;
     border-radius: 25px;
+    border:solid brown 15px;
+    position: relative;
+    float: left;
+    width: 350px;
+    height: 250px;
+    background-position: 50% 50%;
+    background-repeat : no-repeat;
+    background-size : cover;
 }

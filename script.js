@@ -17,22 +17,26 @@ const api_key = `b1e2e3086bc7b16601f541716bc0bfc7`;
 
 const searchForm = document.querySelector(`#search-form`);
 const searchInput = document.getElementById('search-term');
-
+let page = 1;
 const results = document.querySelector(`.results`);
 
 searchForm.addEventListener(`submit`, function(e) {
 	e.preventDefault();
 	const term = document.querySelector('#search-term').value;
-	const search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}`;
+	const search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}&page=2`;
 
 	$.ajax({
 		url: search_api,
 		dataType: 'json',
 		success: function(data) {
 			let recipes = data.recipes;
-
+			console.log(recipes);
 			for (let key in recipes) {
 				console.log(recipes[key].title);
+				let rating = recipes[key].social_rank;
+				rating = Math.floor(rating);
+				console.log(rating);
+
 				results.innerHTML += ` 
 				<div class='title'>
 								<div class = 'recipe-title'>
@@ -40,10 +44,10 @@ searchForm.addEventListener(`submit`, function(e) {
 								</div>
 								<ul>
 										<li>
-												Rating: ${recipes[key].social_rank}
+												<strong>Rating:</strong> ${rating}
 										</li>
 										<li>
-												Publisher: ${recipes[key].publisher}
+													<strong>Publisher:</strong> ${recipes[key].publisher}
 										</li>
 										<li>
 												<a href=${recipes[key].publisher_url}/>Publisher</a>
