@@ -2,41 +2,69 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Recipe API</title>
-    <link href="https://fonts.googleapis.com/css?family=Macondo" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Recipe API</title>
+  <link href="https://fonts.googleapis.com/css?family=Macondo" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="top_img"></div>
-    <main>
-        <h1 id='main_achronym'>FRS</h1>
-        <h1>Your Favorite Food Recipe Search Engine</h1>
-        <h3>Powered by eT
-            <suP>2</suP> (excellenceThroughTechnology)</h3>
+  <div class="top_img"></div>
+  <main>
+    <h1 id='main_achronym'>~ FRS ~</h1>
+    <h1>Your favorite
+      <big>F</big>ood
+      <big>R</big>ecipe
+      <big>S</big>earch engine</h1>
+    <h3>Powered by eT
+      <suP>2</suP> (excellenceThroughTechnology)</h3>
 
-        <div class="form-container">
-            <form id="search-form">
-                <input type="text" value="" id='search-term' placeholder='Enter Recipe and "Click Plate"...or..."Click Plate" for Trending Recipes '>
-                <button id='submit-btn' type="submit">
-                    <img id='submit-btn-img' src="plate.png" alt="">
-                </button>
-            </form>
-        </div>
-        <div class="results"></div>
+    <div class="form-container">
+      <form id="search-form">
+        <input type="text" value="" id='search-term' placeholder='Enter search term and press ENTER...or..."CLICK" the plate below for random recipes '>
+    </div>
+    <div id='plate-btn'>
+      <button id='submit-btn' type="submit" action: 'hover'>
+        <img id='submit-btn-img' src="plate.png" alt="food-plate">
+      </button>
+    </div>
+    </form>
 
-        <img class="btm_img" src=' https://i.pinimg.com/originals/9d/77/85/9d77859c22a4328aa0960ecf4e825800.png' alt="">
 
-        <h2> Thank you for using FRS - powered by eT
-            <suP>2</suP>!</h2>
-    </main>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="script.js"></script>
+    <div class='search-btns' style='text-align:center'>
+      <button id="next_page_btn">Next Page</button>
+      <button id="trending_btn">Trending Recipes</button>
+      <button id="rating_btn">By Rating</button>
+    </div>
+    </div>
+
+    <div class="results">
+
+    </div>
+
+    <img class="btm_img" src=' https://i.pinimg.com/originals/9d/77/85/9d77859c22a4328aa0960ecf4e825800.png' alt="">
+
+    <!-- <div class='search-btns' style='text-align:center'>
+      <button id="next_page_btn">Next Page</button>
+      <button id="trending_btn">Trending Recipes</button>
+      <button id="rating_btn">By Rating</button>
+    </div> -->
+    <div class='search-btns' style='text-align:center'>
+
+
+      <button id="more_btn">More Recipes</button>
+    </div>
+    <h2> Thank you for using FRS - powered by eT
+      <suP>2</suP>!</h2>
+  </main>
+
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
