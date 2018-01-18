@@ -8,6 +8,11 @@ body {
     background-color: blanchedalmond;
 }
 
+.wrapper {
+    margin: 60px auto;
+    text-align: center;
+}
+
 .top_img {
     background-image: url("https://res.cloudinary.com/hellofresh/image/upload/dpr_auto,f_auto,fl_lossy,q_80,w_730/v1/hellofresh_s3/image/5a149bd6d56afa177c7396e2-cfaac55c.jpg");
     background-size: cover;

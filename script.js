@@ -11,14 +11,6 @@
 
 // ?key={API_KEY}&q=shredded%20chicken
 
-/////////////////////////VARIABLES///////////////////////////////////
-
-const api_key = `b1e2e3086bc7b16601f541716bc0bfc7`;
-
-const searchForm = document.querySelector(`#search-form`);
-const searchInput = document.getElementById('search-term');
-const results = document.querySelector(`.results`);
-
 /////////////////SCREEN TRANSITION - fadeIn////////////////////////////
 
 $('.top_img')
@@ -34,34 +26,48 @@ $('.search-btns')
 	.fadeIn(4000)
 	.delay(20000);
 
-/////////////////APPLICATION FUNCTION//////////////////////////////////
+/////////////////////////VARIABLES///////////////////////////////////
 
-const term = document.querySelector('#search-term').value;
+const api_key = `b1e2e3086bc7b16601f541716bc0bfc7`;
+
+const searchForm = document.querySelector(`#search-form`);
+const searchInput = document.getElementById('search-term');
+const results = document.querySelector(`.results`);
+
+let term = $('#search-term').value;
 let search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}
 	`;
 
+/////////////////APPLICATION FUNCTION//////////////////////////////////
+
 $('#trending_btn').on('click', function() {
 	console.log('Trending click event');
-	search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}&sort=t`;
+	search_api = `http://food2fork.com/api/search?key=${api_key}&sort=t`;
+	console.log(search_api);
 	getAPI();
 });
 
 $('#rating_btn').on('click', function() {
 	console.log('Rating click event');
-	search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}&sort=r`;
+	search_api = `http://food2fork.com/api/search?key=${api_key}&sort=r`;
+	console.log(search_api);
 	getAPI();
 });
 
 $('#next_page_btn, #more_btn').on('click', function() {
 	console.log('Next-page click event');
-	search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}&page=2`;
+	search_api = `http://food2fork.com/api/search?key=${api_key}&page=2`;
+	console.log(search_api);
 	getAPI();
 });
 
 searchForm.addEventListener(`submit`, function(e) {
 	e.preventDefault();
+	term = document.querySelector('#search-term').value;
 	if (e.keyCode === 13) {
 		document.getElementById('submit-btn').click();
+
+		console.log(term);
 	}
 
 	$.ajax({
@@ -69,6 +75,7 @@ searchForm.addEventListener(`submit`, function(e) {
 		dataType: 'json',
 		success: function(data) {
 			let recipes = data.recipes;
+			console.log(search_api);
 			console.log(recipes);
 			for (let key in recipes) {
 				console.log(recipes[key].title);
