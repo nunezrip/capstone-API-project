@@ -1,4 +1,4 @@
-// ....................fork2fork API......................
+// ...............fork2fork API INSTRUCTIONS......................
 
 // Food2Fork offers an API which exposes its ingredient search functionality across its database of publishers. The API gives you access to our ever expanding socially ranked recipe database and state-of-the-art ingredient search function, providing your app with the necessary tools to gain a competitive edge over the competition.
 
@@ -10,6 +10,8 @@
 // SAMPLE Request:  http://food2fork.com/api/search?key={API_KEY}&q=shredded%20chicken
 
 // ?key={API_KEY}&q=shredded%20chicken
+
+// ...............END fork2fork API INSTRUCTIONS..................
 
 //.............UPLOAD SCREEN TRANSITION FADE-IN...........
 
@@ -42,6 +44,7 @@ $('#trending_btn').on('click', function() {
 	console.log('Search Type: Trending click event');
 	search_api = `http://food2fork.com/api/search?key=${api_key}&sort=t`;
 	console.log('Search API = ' + search_api);
+	$('.results').empty();
 	getAPI();
 });
 
@@ -51,6 +54,7 @@ $('#rating_btn').on('click', function() {
 	console.log('Search Type = Rating click event');
 	search_api = `http://food2fork.com/api/search?key=${api_key}&sort=r`;
 	console.log('Search API = ' + search_api);
+	$('.results').empty();
 	getAPI();
 });
 
@@ -60,71 +64,33 @@ $('#next_page_btn, #more_btn').on('click', function() {
 	console.log('Search Type = Next-page click event');
 	search_api = `http://food2fork.com/api/search?key=${api_key}&page=2`;
 	console.log('Search API = ' + search_api);
+	$('.results').empty();
 	getAPI();
 });
 
-//..............SUBMIT/SEARCH BTN FUNCTION................
+//..............REFRESHER BTN FUNCTION..........................
+
+$('#refresh-btn-img').on('click', function() {
+	console.log('Refresh click event');
+	document.querySelector('#search-term').value = '';
+	$('.results').empty();
+});
+
+//..............MAIN SUBMIT/SEARCH BTN FUNCTION................
 
 searchForm.addEventListener(`submit`, function(e) {
 	e.preventDefault();
+	$('.results').empty();
 	let term = document.querySelector('#search-term').value;
 	console.log('Search Type = General Form Term click/enter event');
 	search_api = `http://food2fork.com/api/search?key=${api_key}&q=${term}`;
-
 	if (e.keyCode === 13) {
 		document.getElementById('submit-btn').click();
-		// console.log(e.data.value);
 	}
-
-	$.ajax({
-		url: search_api,
-		dataType: 'json',
-		success: function(data) {
-			let recipes = data.recipes;
-			console.log('Search Term = ' + term);
-			console.log('Search API = ' + search_api);
-			console.log(recipes);
-			for (let key in recipes) {
-				console.log(recipes[key].title);
-				let rating = recipes[key].social_rank;
-				rating = Math.floor(rating);
-				console.log(rating);
-
-				results.innerHTML += ` 
-				<div class='title'>
-								<div class = 'recipe-title'>
-										Recipe Title: ${recipes[key].title}
-								</div>
-								<ul>
-										<li>
-												<strong>Rating:</strong> ${rating}
-										</li>
-										<li>
-													<strong>Publisher:</strong> ${recipes[key].publisher}
-										</li>
-										<li>
-												<a href=${recipes[key].publisher_url}/>Publisher</a>
-										</li>
-										<li>
-										<a href=${recipes[key].source_url}/>Source</a> 
-										</li>
-										<li>
-												<a href=${recipes[key].f2f_url}/>Ingredients and Directions at Fork2Fork (f2f)</a>
-										</li>
-								</ul>
-									
-						</div>
-				`;
-				results.innerHTML += `<img class='results_img' src="${recipes[key].image_url}">`;
-			}
-		},
-		error: function(error) {
-			console.log('Error: ' + error);
-		},
-	});
+	getAPI();
 });
 
-//.........FUNCTION FOR NEXT PAGE, TRENDING AND RATING REQUESTS...........
+//...................AJAX REQUEST FUNCTION.....................
 
 function getAPI(url, data) {
 	$.ajax({
@@ -142,23 +108,23 @@ function getAPI(url, data) {
 				results.innerHTML += ` 
 				<div class='title'>
 								<div class = 'recipe-title'>
-										Recipe Title: ${recipes[key].title}
+										<strong>Recipe Title:</strong> ${recipes[key].title}
 								</div>
 								<ul>
+									<li>
+												<strong>Recipe ID:</strong> ${recipes[key].recipe_id}
+										</li>
 										<li>
 												<strong>Rating:</strong> ${rating}
 										</li>
 										<li>
-													<strong>Publisher:</strong> ${recipes[key].publisher}
-										</li>
-										<li>
-												<a href=${recipes[key].publisher_url}/>Publisher</a>
+													<a href=${recipes[key].publisher_url}/>Publisher</a>:</strong> ${recipes[key].publisher}
 										</li>
 										<li>
 										<a href=${recipes[key].source_url}/>Source</a> 
 										</li>
 										<li>
-												<a href=${recipes[key].f2f_url}/>Ingredients and Directions at Fork2Fork (f2f)</a>
+												<a href=${recipes[key].f2f_url}/>Ingredients and Directions at Food2Fork (f2f)</a>
 										</li>
 								</ul>
 									
@@ -172,3 +138,5 @@ function getAPI(url, data) {
 		},
 	});
 }
+
+// .........................END OF APPLICATION.........................

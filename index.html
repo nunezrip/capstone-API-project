@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Recipe API</title>
+  <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Macondo" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,19 +14,24 @@
 <body>
   <divclass='wrapper'>
     </div>
+    <div>
+      <h1 id='main_achronym'>~ Food Recipe Search ~</h1>
+    </div>
     <div class="top_img"></div>
     <main>
-      <h1 id='main_achronym'>~ FRS ~</h1>
+
+
       <h1>Your favorite
         <big>F</big>ood
         <big>R</big>ecipe
         <big>S</big>earch engine</h1>
-      <h3>Powered by eT
-        <suP>2</suP> (excellenceThroughTechnology)</h3>
+
 
       <div class="form-container">
         <form id="search-form" onsubmit="console.log('Form submitted'); return false">
+
           <input type="text" value="" id='search-term' placeholder='Enter search term and press ENTER...or..."CLICK" the plate below for random recipes '>
+          <img id='refresh-btn-img' src="Reload-icon.png" alt="refresh-btn">
       </div>
       <div id='plate-btn'>
         <button id='submit-btn' type="submit" action: 'hover'>
@@ -35,10 +41,12 @@
       </form>
 
       <div class='search-btns' style='text-align:center'>
-        <button id="next_page_btn">Next Page</button>
-        <button id="trending_btn">Trending Recipes</button>
         <button id="rating_btn">By Rating</button>
+        <button id="trending_btn">Trending Recipes</button>
+        <button id="next_page_btn">Page 2</button>
       </div>
+      <h3>Powered by eT
+        <suP>2</suP> (excellenceThroughTechnology)</h3>
       </div>
 
       <div class="results">
@@ -53,17 +61,33 @@
       <button id="rating_btn">By Rating</button>
     </div> -->
       <div class='search-btns' style='text-align:center'>
-
-
         <button id="more_btn">More Recipes</button>
       </div>
 
+      <!-- <div id='submit-form'>
+        <p>Comments or Suggestions?</p>
+        <p>Enter names in the fields, then click "Submit" to submit the form:</p>
+
+        <form id="comments-form" action="/action_page" style='width:60%'>
+          First name:
+          <input type="text" name="fname">
+          <br>
+          <br> Last name:
+          <input type="text" name="lname">
+          <br>
+          <br> Comments/Suggestions:
+          <input type="text" name="lname">
+          <br>
+          <br>
+          <input type="button" onclick="myFunction()" value="Submit">
+        </form>
+      </div> -->
+
     </main>
 
-
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
     <script src="script.js"></script>
+
     </div>
 </body>
 

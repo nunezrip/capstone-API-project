@@ -4,8 +4,16 @@
 }
 
 body {
-    margin: 0;
+    margin: 70px;
     background-color: blanchedalmond;
+    border: solid brown 5px;
+    border-radius: 10px;
+   
+    padding: 20px;
+}
+
+.outer {
+    overflow: auto;
 }
 
 .wrapper {
@@ -18,37 +26,51 @@ body {
     background-size: cover;
     background-position: center;
     height: 400px;
+    border-radius: 25px;
+    margin: 0 40px 0 40px;
 }
 
 .btm_img {
     width: 100%;
-    padding-top: 90px;
+    padding-top: 10px;
 }
 
 .results img {
     margin: 10px;
     border-radius: 25px;
-    border: solid brown 15px;
+    border: solid brown 8px;
     position: relative;
     float: left;
-    width: 350px;
-    height: 250px;
+    width: 300px;
+    height: 200px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+#refresh-btn-img{
+ background-position: center;
+ height: 60px;
+ cursor: pointer;
+}
+
+
+#f2flogo {
+    width: 100px;
+    height: 200px;
+}
+
 #main_achronym {
-    font-size: 100px;
+    font-size: 50px;
     text-align: center;
-    font-family: 'Macondo', cursive;
+    font-family: 'Cinzel', serif;
     font-weight: bold;
     color: rgba(194, 16, 0, 0.86);
 }
 
 h1 {
     padding: 0;
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
     font-family: 'Macondo', cursive;
     font-weight: bolder;
@@ -66,12 +88,21 @@ h2 {
 
 h3 {
     padding: 0;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     font-family: 'Macondo', cursive;
     font-weight: bold;
     color: rgba(235, 54, 8, 0.86);
 }
+
+    p {
+    padding: 0;
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Macondo', cursive;
+    font-weight: bold;
+    color: rgba(235, 54, 8, 0.86);
+    }
 
 .results {
     margin-top: 40px;
@@ -93,9 +124,8 @@ h3 {
 }
 
 .recipe-title {
-    font-size: 40px;
+    font-size: 30px;
     color: rgb(155, 23, 6);
-    font-weight: bolder;
 }
 
 .form-container {
@@ -109,6 +139,7 @@ h3 {
     display: flex;
     text-align: center;
     padding-bottom: 10px;
+    border-radius: 10px;
 }
 
 form input {
@@ -177,3 +208,11 @@ form input::placeholder {
     height: 60px;
     cursor: pointer;
 }
+
+/* #comments-form{
+   margin: 10px 40px 10px 40px;
+     font-size: 25px;
+     font-weight: 300px;
+     padding: 10px;
+     background-color: rgba(240, 158, 111, 0.986);
+} */
