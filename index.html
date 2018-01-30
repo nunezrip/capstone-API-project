@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Recipe API</title>
   <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
@@ -30,23 +30,26 @@
       <div class="form-container">
         <form id="search-form" onsubmit="console.log('Form submitted'); return false">
 
-          <input type="text" value="" id='search-term' placeholder='Enter search term and press ENTER...or..."CLICK" the plate below for random recipes '>
+          <input type="text" value="" id='search-term' placeholder='Enter search term and press ENTER...or..."CLICK" the plate below for your recipes '>
           <img id='refresh-btn-img' src="Reload-icon.png" alt="refresh-btn">
+
       </div>
+
       <div id='plate-btn'>
         <button id='submit-btn' type="submit" action: 'hover'>
           <img id='submit-btn-img' src="plate.png" alt="food-plate">
         </button>
       </div>
       </form>
-
       <div class='search-btns' style='text-align:center'>
         <button id="rating_btn">By Rating</button>
         <button id="trending_btn">Trending Recipes</button>
         <button id="next_page_btn">Page 2</button>
       </div>
-      <h3>Powered by eT
-        <suP>2</suP> (excellenceThroughTechnology)</h3>
+
+      <div>
+        <h3>Powered by eT
+          <suP>2</suP> (excellenceThroughTechnology)</h3>
       </div>
 
       <div class="results">
@@ -55,33 +58,54 @@
 
       <img class="btm_img" src=' https://i.pinimg.com/originals/9d/77/85/9d77859c22a4328aa0960ecf4e825800.png' alt="">
 
-      <!-- <div class='search-btns' style='text-align:center'>
-      <button id="next_page_btn">Next Page</button>
-      <button id="trending_btn">Trending Recipes</button>
-      <button id="rating_btn">By Rating</button>
-    </div> -->
       <div class='search-btns' style='text-align:center'>
         <button id="more_btn">More Recipes</button>
       </div>
 
-      <!-- <div id='submit-form'>
-        <p>Comments or Suggestions?</p>
-        <p>Enter names in the fields, then click "Submit" to submit the form:</p>
 
-        <form id="comments-form" action="/action_page" style='width:60%'>
-          First name:
-          <input type="text" name="fname">
-          <br>
-          <br> Last name:
-          <input type="text" name="lname">
-          <br>
-          <br> Comments/Suggestions:
-          <input type="text" name="lname">
-          <br>
-          <br>
-          <input type="button" onclick="myFunction()" value="Submit">
+      <div id='email-instructions'>
+
+        <h3>~ Send us your comments to:
+          <a href="mailto:panunezrip@gmail.com">FRS (Food Recipe Search)
+          </a> ~
+        </h3>
+        <h3>or</h3>
+        <h3>~ Share with a friend! ~</h3>
+      </div>
+      <div id="bottom-container">
+
+        <div id="inner-container">
+          <form id='emailForm'>
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="form-group col-md-4">
+                <label for="to">To:</label>
+                <input id='to' type="email" class="form-control" name="to">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="form-group col-md-4">
+                <label for="subject">Subject:</label>
+                <input id='subject' type="text" class="form-control" name="subject">
+              </div>
+            </div>
+
+            <div id='textarea'>
+              <label>Comments:</label>
+              <textarea id='comments' type="textarea" rows='5' name="comments"></textarea>
+            </div>
+
+            <div id="send-btn">
+              <button type="submit" id="send-email" class="btn btn-success">Send
+              </button>
+
+            </div>
+        </div>
         </form>
-      </div> -->
+      </div>
+      </div>
 
     </main>
 
@@ -89,6 +113,8 @@
     <script src="script.js"></script>
 
     </div>
+
+
 </body>
 
 </html>

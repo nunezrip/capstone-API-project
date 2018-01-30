@@ -1,0 +1,32 @@
+{
+  "name": "frs_email",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "author": "P Nunez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "espress": "0.0.0",
+    "express": "^4.16.2",
+    "nodemailer": "^4.0.1",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nunezrip/capstone-API-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nunezrip/capstone-API-project/issues"
+  },
+  "homepage": "https://github.com/nunezrip/capstone-API-project#readme",
+  "description": "food recipe search engine app",
+  "keywords": [
+    "frs"
+  ]
+}

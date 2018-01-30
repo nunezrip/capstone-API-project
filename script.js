@@ -118,7 +118,7 @@ function getAPI(url, data) {
 												<strong>Rating:</strong> ${rating}
 										</li>
 										<li>
-													<a href=${recipes[key].publisher_url}/>Publisher</a>:</strong> ${recipes[key].publisher}
+												<a href=${recipes[key].publisher_url}/>Publisher</a>:</strong> ${recipes[key].publisher}
 										</li>
 										<li>
 										<a href=${recipes[key].source_url}/>Source</a> 
@@ -139,4 +139,33 @@ function getAPI(url, data) {
 	});
 }
 
-// .........................END OF APPLICATION.........................
+// ......SUBMIT E-MAIL WITH COMMENTS/SUGGESTIONS FORM..................
+
+let email = document.getElementById('emailForm').value;
+
+$('#send-email').click(email, function(e) {
+	e.preventDefault();
+	console.log('E-mail Send Button click event');
+
+	var to = document.getElementById('to').value;
+	var subject = document.getElementById('subject').value;
+	var comments = document.getElementById('comments').value;
+
+	alert(
+		'E-mail Submitted Successfully......' +
+			'\n\nE-mail : ' +
+			to +
+			'\nSubject : ' +
+			subject +
+			'\nComments : ' +
+			comments,
+	);
+
+	$.ajax({
+		url: 'http://localhost:3000/send-email',
+		method: 'post',
+		data: 'sending data',
+	}).done(function(response) {
+		console.log('AJAX Call Executed');
+	});
+});
